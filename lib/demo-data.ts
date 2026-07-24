@@ -107,3 +107,131 @@ export const INTEGRATIONS = [
   { name: "دستیار منابع انسانی", desc: "پاسخ به سوالات پرتکرار از پایگاه دانش", tag: "hr_assistant" },
   { name: "رونویسی جلسات", desc: "خلاصه‌سازی خودکار مذاکرات تیمی", tag: "transcribe" },
 ];
+
+export const FEATURE_CATEGORIES = [
+  {
+    id: "platform",
+    label: "پلتفرم",
+    icon: "Layers",
+    color: "cyan",
+    features: [
+      { title: "داشبورد شخصی", desc: "خلاصه وظایف، روحیه و اقدامات روزانه هر کاربر" },
+      { title: "مرکز اقدام مدیر", desc: "تأییدها، معوق‌ها و هشدارها در یک نگاه" },
+      { title: "احراز هویت OTP", desc: "ورود با SMS کاوه‌نگار یا ایمیل یک‌بارمصرف" },
+      { title: "ساختار چندسازمانی", desc: "هر سازمان داده و مجوزهای مستقل خود را دارد" },
+      { title: "PWA + Android", desc: "نصب روی موبایل و استفاده آفلاین‌محور" },
+    ],
+  },
+  {
+    id: "operations",
+    label: "عملیات",
+    icon: "Zap",
+    color: "violet",
+    features: [
+      { title: "WorkTask", desc: "وظایف با گردش کار تأیید PM → Admin" },
+      { title: "پروژه‌های SDO", desc: "مدیریت پروژه، OKR و دعوت اعضا" },
+      { title: "بورد کانبان", desc: "ستون، کارت و drag & drop با دسترسی دقیق" },
+      { title: "برچسب و پیوست", desc: "سازماندهی وظایف با label و فایل" },
+      { title: "روزهای کاری", desc: "تنظیم تقویم کاری هر سازمان" },
+    ],
+  },
+  {
+    id: "business",
+    label: "کسب‌وکار",
+    icon: "TrendingUp",
+    color: "emerald",
+    features: [
+      { title: "مالی", desc: "درآمد، هزینه، حقوق، پیش‌فاکتور و مانده حساب" },
+      { title: "CRM", desc: "سرنخ، مشتری، سفارش و فعالیت فروش" },
+      { title: "پورسانت", desc: "تیم پروژه، تنظیمات org و گزارش PnL" },
+      { title: "گزارش‌ها", desc: "گزارش کار روزانه، هزینه پروژه و خروجی Excel" },
+      { title: "import Excel", desc: "ورود داده از Excel برای مدیریت مالی" },
+    ],
+  },
+  {
+    id: "collaboration",
+    label: "همکاری",
+    icon: "MessageCircle",
+    color: "blue",
+    features: [
+      { title: "چت Real-time", desc: "اتاق خصوصی/گروهی با WebSocket و fallback HTTP" },
+      { title: "Notion", desc: "مستندات تیمی با CKEditor5، تگ و کامنت" },
+      { title: "Pulse", desc: "داشبورد روحیه، بار کاری و واحد سازمانی" },
+      { title: "Persona AI", desc: "پروفایل هوشمند، جلسات AI و RAG از WorkTask" },
+      { title: "رونویسی", desc: "رونویسی و خلاصه‌سازی جلسات با AI" },
+    ],
+  },
+  {
+    id: "engagement",
+    label: "انگیزش",
+    icon: "Trophy",
+    color: "amber",
+    features: [
+      { title: "سکه و جوایز", desc: "امتیازدهی، فروشگاه جوایز و هدیه همکار" },
+      { title: "Mood روزانه", desc: "ثبت روحیه و نمودار سلامت تیم" },
+      { title: "Presence", desc: "check-in/check-out، استندآپ و جایزه هفتگی" },
+      { title: "HR Workspace", desc: "مسیر شغلی، چالش‌ها و competency framework" },
+      { title: "HR Assistant", desc: "چت RAG برای سوالات منابع انسانی" },
+    ],
+  },
+  {
+    id: "integrations",
+    label: "یکپارچه‌سازی",
+    icon: "Plug",
+    color: "rose",
+    features: [
+      { title: "Google Calendar", desc: "sync وظایف با تقویم شخصی" },
+      { title: "بله", desc: "گزارش روزانه خودکار و ربات سازمانی" },
+      { title: "کاوه‌نگار", desc: "پیامک OTP، یادآور و اعلان" },
+      { title: "Transcribe", desc: "رونویسی صوتی و خلاصه AI" },
+      { title: "بلاگ", desc: "مقالات SEO و محتوای عمومی" },
+    ],
+  },
+];
+
+export const COMPARISON_ROWS = [
+  { label: "ابزارهای پراکنده", without: "۵+ ابزار و Excel", with: "یک پلتفرم یکپارچه" },
+  { label: "گزارش‌دهی", without: "دستی و زمان‌بر", with: "خودکار از WorkTask و مالی" },
+  { label: "تأیید وظایف", without: "بدون ساختار", with: "PM → Admin با قفل ویرایش" },
+  { label: "سلامت تیم", without: "غیرقابل اندازه‌گیری", with: "Pulse، Mood و Presence" },
+  { label: "دسترسی", without: "سخت و ناامن", with: "RBAC + ReBAC per سازمان" },
+  { label: "پشتیبانی فارسی", without: "محصولات خارجی", with: "راست‌به‌چپ، شمسی، بله" },
+];
+
+export const TESTIMONIALS = [
+  {
+    role: "مدیرعامل",
+    org: "استارتاپ فین‌تک",
+    text: "با SDO برای اولین بار کل سازمان را در یک داشبورد می‌بینم؛ از وظایف تا هزینه و روحیه تیم.",
+  },
+  {
+    role: "مدیر منابع انسانی",
+    org: "شرکت نرم‌افزاری",
+    text: "گزارش خودکار و Mood روزانه به ما کمک کرد زودتر متوجه خستگی تیم شویم و پیش‌قدم شویم.",
+  },
+  {
+    role: "مدیر پروژه",
+    org: "آژانس دیجیتال",
+    text: "گردش کار تأیید WorkTask باعث شد کیفیت خروجی تیم بالا برود و گزارش‌ها خودکار شوند.",
+  },
+];
+
+export const DASHBOARD_WIDGETS = [
+  { id: "action", label: "مرکز اقدام", color: "cyan", rows: ["۳ وظیفه منتظر تأیید", "۲ پروژه نزدیک سقف بودجه", "۱ عضو با روحیه پایین"] },
+  { id: "tasks", label: "وضعیت وظایف", color: "violet", rows: ["۴۵ تأیید نهایی", "۲۲ منتظر تأیید", "۱۸ در حال انجام", "۸ معوق"] },
+  { id: "mood", label: "نبض تیم", color: "rose", rows: ["میانگین روحیه ۷.۴/۱۰", "فروش: بار کاری ۸۵٪", "HR: پیشنهاد جلسه"] },
+  { id: "finance", label: "مالی", color: "emerald", rows: ["مصرف بودجه ۷۸٪", "۲ هشدار هزینه", "پیش‌فاکتور ۵ عدد"] },
+  { id: "calendar", label: "تقویم", color: "amber", rows: ["۵ وظیفه sync با Google", "۲ جلسه امروز", "گزارش روزانه بله"] },
+  { id: "presence", label: "حضور", color: "blue", rows: ["۲۴ check-in امروز", "استندآپ ۱۰:۰۰", "جایزه هفتگی فعال"] },
+];
+
+export const TRUST_BADGES = [
+  "SaaS چندسازمانی",
+  "۲۷ اپ Django",
+  "WebSocket Real-time",
+  "RBAC + ReBAC",
+  "PWA + Android",
+  "هوش مصنوعی بومی",
+  "RTL فارسی",
+  "کاوه‌نگار / بله",
+];

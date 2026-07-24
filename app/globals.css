@@ -183,3 +183,244 @@ body {
   opacity: var(--particle-opacity);
   transition: opacity 0.3s ease;
 }
+
+/* ── Spotlight & interactive effects ── */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight: radial-gradient(
+    400px circle at var(--mouse-x) var(--mouse-y),
+    var(--glow-cyan),
+    transparent 40%
+  );
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--spotlight);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+.spotlight-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 3D tilt card ── */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+}
+
+.tilt-content {
+  transform: translateZ(20px);
+}
+
+/* ── Shimmer / animated border ── */
+.animated-border {
+  position: relative;
+  border-radius: inherit;
+}
+
+.animated-border::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--angle, 0deg),
+    transparent 0%,
+    var(--accent-cyan) 20%,
+    var(--accent-violet) 40%,
+    var(--accent-emerald) 60%,
+    var(--accent-cyan) 80%,
+    transparent 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: spin 4s linear infinite;
+}
+
+.animated-border:hover::before {
+  opacity: 1;
+}
+
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes spin {
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* ── Text shimmer ── */
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--accent-cyan) 0%,
+    var(--accent-violet) 25%,
+    var(--accent-emerald) 50%,
+    var(--accent-violet) 75%,
+    var(--accent-cyan) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
+  }
+}
+
+/* ── Marquee ticker ── */
+.ticker-wrap {
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 30s linear infinite;
+}
+
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(50%);
+  }
+}
+
+/* ── Scroll reveal helpers ── */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Glass variants ── */
+.glass-strong {
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(24px);
+}
+
+.glass-hover {
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-hover:hover {
+  background: color-mix(in srgb, var(--surface) 100%, transparent);
+  border-color: color-mix(in srgb, var(--accent-cyan) 30%, transparent);
+  box-shadow: 0 0 40px -12px var(--glow-cyan);
+}
+
+/* ── Magnetic button base ── */
+.magnetic-btn {
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ── Feature tab pill ── */
+.feature-pill {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.feature-pill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.feature-pill[data-active="true"]::after {
+  opacity: 1;
+}
+
+.feature-pill[data-active="true"] {
+  color: white;
+  font-weight: 600;
+}
+
+/* ─ hide scrollbar for horizontal scrollers ─ */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ── Number counter gradient ── */
+.counter-gradient {
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-violet) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Bento grid card glow ── */
+.bento-glow {
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 4px 24px -12px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.bento-glow:hover {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent-cyan) 40%, transparent),
+    0 24px 48px -16px var(--glow-cyan);
+  transform: translateY(-2px);
+}
+
+/* ── Dashboard widget dots ── */
+.widget-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+

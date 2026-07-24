@@ -10,7 +10,10 @@ export function ThemeToggle({ className }: { className?: string }) {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    const id = setTimeout(() => setMounted(true), 0);
+    return () => clearTimeout(id);
+  }, []);
 
   if (!mounted) {
     return (
@@ -33,7 +36,7 @@ export function ThemeToggle({ className }: { className?: string }) {
         type="button"
         onClick={() => setTheme("light")}
         className={cn(
-          "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors",
+          "flex cursor-pointer items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors",
           !isDark
             ? "bg-background text-foreground shadow-sm"
             : "text-muted hover:text-foreground"
@@ -49,7 +52,7 @@ export function ThemeToggle({ className }: { className?: string }) {
         type="button"
         onClick={() => setTheme("dark")}
         className={cn(
-          "flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors",
+          "flex cursor-pointer items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-medium transition-colors",
           isDark
             ? "bg-background text-foreground shadow-sm"
             : "text-muted hover:text-foreground"

@@ -2,19 +2,24 @@
 
 import dynamic from "next/dynamic";
 import { Navbar } from "@/components/landing/Navbar";
-import { Hero } from "@/components/landing/Hero";
+import { HeroBento } from "@/components/landing/HeroBento";
+import { Ticker } from "@/components/ui/Ticker";
 import { ProblemSection } from "@/components/landing/ProblemSection";
 import { PillarsSection } from "@/components/landing/PillarsSection";
+import { FeatureTabs } from "@/components/landing/FeatureTabs";
 import { AnalyticsSection } from "@/components/landing/AnalyticsSection";
-import { WorkflowSection } from "@/components/landing/WorkflowSection";
-import { DashboardSlider } from "@/components/landing/DashboardSlider";
+import { InteractiveWorkflow } from "@/components/landing/InteractiveWorkflow";
+import { DashboardBento } from "@/components/landing/DashboardBento";
+import { WhySDO } from "@/components/landing/WhySDO";
 import { ModulesSection } from "@/components/landing/ModulesSection";
-import { IntegrationsSection } from "@/components/landing/IntegrationsSection";
+import { IntegrationOrbit } from "@/components/landing/IntegrationOrbit";
 import { AISection } from "@/components/landing/AISection";
 import { RolesSection } from "@/components/landing/RolesSection";
+import { SocialProof } from "@/components/landing/SocialProof";
 import { CTASection } from "@/components/landing/CTASection";
 import { Footer } from "@/components/landing/Footer";
 import { SmoothScroll } from "@/components/effects/SmoothScroll";
+import { TRUST_BADGES } from "@/lib/demo-data";
 
 const ParticleBackground = dynamic(
   () => import("@/components/effects/ParticleBackground").then((m) => m.ParticleBackground),
@@ -28,16 +33,22 @@ export default function Home() {
       <div className="relative z-10">
         <Navbar />
         <main>
-          <Hero />
+          <HeroBento />
+          <div className="py-8">
+            <Ticker items={TRUST_BADGES} />
+          </div>
           <ProblemSection />
           <PillarsSection />
+          <FeatureTabs />
           <AnalyticsSection />
-          <WorkflowSection />
-          <DashboardSlider />
+          <InteractiveWorkflow />
+          <DashboardBento />
+          <WhySDO />
           <ModulesSection />
-          <IntegrationsSection />
+          <IntegrationOrbit />
           <AISection />
           <RolesSection />
+          <SocialProof />
           <CTASection />
         </main>
         <Footer />
