@@ -142,7 +142,7 @@ export function HeroBento() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <TiltCard className="relative" intensity={6}>
+            <TiltCard className="relative" intensity={20}>
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="glass-strong bento-glow col-span-2 rounded-3xl p-5">
                   <div className="mb-4 flex items-center justify-between">
